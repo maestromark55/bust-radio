@@ -1,9 +1,9 @@
-pi-lock
+bust-radio
 =======
 
-A RFID solution for Access Control and Management
+A RFID solution for mpd playlists adapted from Pi-Lock
 
 
 #### Description
 
-Pi-Lock is an automated door Security System built around the Raspberry Pi. Using a RFID reader and PIN entry system, access to buildings, departments and rooms is controlled in a secure, efficient, and cost-minimizing system.
+This is a simple Raspberry pi jukebox making use of the RFID reading code from Pi-Lock. It simply uses RFID chips to select which playlist/internet radio station to play
