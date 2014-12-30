@@ -35,10 +35,10 @@ GREEN = 4
 RED = 17
 BLUE = 22
 
-RPIO.setwarnings(False)
-RPIO.setup(GREEN, RPIO.OUT)
-RPIO.setup(RED, RPIO.OUT)
-RPIO.setup(BLUE, RPIO.OUT)
+#RPIO.setwarnings(False)
+#RPIO.setup(GREEN, RPIO.OUT)
+#RPIO.setup(RED, RPIO.OUT)
+#RPIO.setup(BLUE, RPIO.OUT)
 
 
 try:
