@@ -19,6 +19,18 @@ currentDateTime = datetime.datetime.now()
 ## Internet radio stations
 wwoz=subprocess.check_output('/home/pi/get_m3u_stream.sh http://wwoz-sc.streamguys.com/wwoz-hi.mp3.m3u',shell=True)
 
+wwoz=re.sub(':80|\n.*| *|\t*','',wwoz)
+
+wwoz=re.sub('[^\-:a-zA-Z0-9/\.]*','',wwoz)
+
+
+print wwoz
+
+print wwoz
+
+print wwoz
+
+
 fip=subprocess.check_output('/home/pi/get_m3u_stream.sh http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u',shell=True)
 
 
@@ -94,7 +106,8 @@ def buttonLogic():
                     try:
                         ret=readCard()
                         if ret !='failed':
-                            print('playing')
+                            ret=re.sub(' +|\n*|\t*|:80','',ret)
+                            #print('mpc add '+ret)
                             subprocess.call('mpc add '+ret,shell=True)
                             subprocess.call('mpc play',shell=True)
                             mpdstatus=getMpdStatus()
@@ -125,7 +138,7 @@ def readCard():
             rfidData = conf.ser.readline().strip()
             if len(rfidData) > 0:
                 rfidData = rfidData[1:13]
-                print "Card Scanned: ", rfidData, ' ', busts[rfidData], len(busts[rfidData])
+                #print "Card Scanned: ", rfidData, ' ', busts[rfidData], len(busts[rfidData])
                 if(len(busts[rfidData])>0):
                     return(busts[rfidData])
     except:
@@ -139,7 +152,7 @@ def readCard():
 if __name__ == '__main__':
     #readCard()
     subprocess.call('mpc clear',shell=True)
-    subprocess.call('mpc stop',shell=True)
+    #subprocess.call('mpc stop',shell=True)
     buttonLogic()
 
 
