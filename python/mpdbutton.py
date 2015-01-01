@@ -23,7 +23,7 @@ fip=subprocess.check_output('/home/pi/get_m3u_stream.sh http://www.tv-radio.com/
 
 
 
-busts={'02005CC4D44E':'strauss','020059093B69':'brahms','020058053D62':'chopin','10005E2C0062':'handel','8500ABEF14D5':'debussy','15007B58C9FF':'lizst','020019707F14':'tchaikovsky','020031B044C7':'bach','0E0023743F66':'beethoven','8500AA681F58':'mozart','020059F4A20D':'jazz','FILLIN':wwoz,'FILLIN2':fip}
+busts={'02005CC4D44E':'strauss','020059093B69':'brahms','020058053D62':'chopin','10005E2C0062':'handel','8500ABEF14D5':'debussy','15007B58C9FF':'lizst','020019707F14':'tchaikovsky','020031B044C7':'bach','0E0023743F66':'beethoven','8500AA681F58':'mozart','020059F4A20D':'jazz','86004378BE03':wwoz,'020045C21D98':fip}
 
 errorCount = 0
 button_pin=18
