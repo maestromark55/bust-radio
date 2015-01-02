@@ -10,6 +10,8 @@ import re
 import time
 import RPi.GPIO as GPIO
 
+## This is a comment
+
 currentTime = time.strftime("%H:%M:%S", time.localtime())
 currentDate = time.strftime("%Y-%m-%d", time.localtime())
 currentDay = datetime.datetime.today().weekday()
