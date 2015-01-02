@@ -17,25 +17,18 @@ currentDateTime = datetime.datetime.now()
 
 
 ## Internet radio stations
-wwoz=subprocess.check_output('/home/pi/get_m3u_stream.sh http://wwoz-sc.streamguys.com/wwoz-hi.mp3.m3u',shell=True)
+def wwoz():
+    ret=subprocess.check_output('/home/pi/get_m3u_stream.sh http://wwoz-sc.streamguys.com/wwoz-hi.mp3.m3u',shell=True)
+    ret=re.sub(':80|\n.*| *|\t*','',ret)
+    ret=re.sub('[^\-:a-zA-Z0-9/\.]*','',ret)
+    return(ret)
 
-wwoz=re.sub(':80|\n.*| *|\t*','',wwoz)
-
-wwoz=re.sub('[^\-:a-zA-Z0-9/\.]*','',wwoz)
-
-
-print wwoz
-
-print wwoz
-
-print wwoz
+def fip():
+    ret=subprocess.check_output('/home/pi/get_m3u_stream.sh http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u',shell=True)
+    return(ret)
 
 
-fip=subprocess.check_output('/home/pi/get_m3u_stream.sh http://www.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u',shell=True)
-
-
-
-busts={'02005CC4D44E':'strauss','020059093B69':'brahms','020058053D62':'chopin','10005E2C0062':'handel','8500ABEF14D5':'debussy','15007B58C9FF':'lizst','020019707F14':'tchaikovsky','020031B044C7':'bach','0E0023743F66':'beethoven','8500AA681F58':'mozart','020059F4A20D':'jazz','86004378BE03':wwoz,'020045C21D98':fip}
+busts={'02005CC4D44E':'strauss','020059093B69':'brahms','020058053D62':'chopin','10005E2C0062':'handel','8500ABEF14D5':'debussy','15007B58C9FF':'lizst','020019707F14':'tchaikovsky','020031B044C7':'bach','0E0023743F66':'beethoven','8500AA681F58':'mozart','020059F4A20D':'jazz','86004378BE03':'wwoz','020045C21D98':'fip'}
 
 errorCount = 0
 button_pin=18
@@ -108,7 +101,12 @@ def buttonLogic():
                         if ret !='failed':
                             ret=re.sub(' +|\n*|\t*|:80','',ret)
                             #print('mpc add '+ret)
-                            subprocess.call('mpc add '+ret,shell=True)
+                            if ret=='wwoz':
+                                subprocess.call('mpc add '+wwoz(),shell=True)
+                            elif ret=='fip':
+                                subprocess.call('mpc add '+fip(),shell=True)
+                            else:
+                                subprocess.call('mpc add '+ret,shell=True)
                             subprocess.call('mpc play',shell=True)
                             mpdstatus=getMpdStatus()
                             card_read=True
