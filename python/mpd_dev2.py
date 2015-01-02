@@ -10,7 +10,7 @@ import re
 import time
 import RPi.GPIO as GPIO
 
-## This is a comment
+## This is a comment testing testing 123
 
 currentTime = time.strftime("%H:%M:%S", time.localtime())
 currentDate = time.strftime("%Y-%m-%d", time.localtime())
