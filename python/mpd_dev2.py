@@ -8,6 +8,8 @@ import sys
 import subprocess
 import RPi.GPIO as GPIO
 import re
+import re
+import re
 
 currentTime = time.strftime("%H:%M:%S", time.localtime())
 currentDate = time.strftime("%Y-%m-%d", time.localtime())
